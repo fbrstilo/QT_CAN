@@ -5,7 +5,7 @@
 
 QCanBusDevice *device = nullptr;
 
-QCanBusDevice* DeviceInit(){
+QCanBusDevice* MainWindow::DeviceInit(){
     if(device) return device; //CAN device already connected
 
     //device not connected
@@ -22,6 +22,14 @@ QCanBusDevice* DeviceInit(){
         }
     }
     return nullptr; // :(
+}
+
+void MainWindow::ReadMessage(){
+    QCanBusFrame frame;
+    while(device->framesAvailable()){
+        frame = device->readFrame();
+        ui->recievedTextBox->append(frame.toString());
+    }
 }
 
 MainWindow::MainWindow(QWidget *parent)

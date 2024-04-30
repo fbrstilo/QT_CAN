@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QCanBus>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,10 +18,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    QCanBusDevice* DeviceInit();
+
+public slots:
+    void ReadMessage();
+
+
 private slots:
     void on_messageID_textChanged(const QString &arg1);
 
     void on_sendMessage_clicked();
+
 
 private:
     Ui::MainWindow *ui;
