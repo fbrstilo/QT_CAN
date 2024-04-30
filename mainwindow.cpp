@@ -26,6 +26,9 @@ QCanBusDevice* MainWindow::DeviceInit(){
 
 void MainWindow::ReadMessage(){
     QCanBusFrame frame;
+    if(device == nullptr){
+        device = DeviceInit();
+    }
     while(device->framesAvailable()){
         frame = device->readFrame();
         ui->recievedTextBox->append(frame.toString());

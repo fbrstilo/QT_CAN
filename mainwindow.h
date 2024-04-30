@@ -25,8 +25,6 @@ public slots:
 
 
 private slots:
-    void on_messageID_textChanged(const QString &arg1);
-
     void on_sendMessage_clicked();
 
 
