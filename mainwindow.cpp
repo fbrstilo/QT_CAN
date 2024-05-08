@@ -12,7 +12,7 @@ QCanBusDevice* MainWindow::DeviceInit(){
     if (QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
         // plugin available
         QString errorString;
-        QCanBusDevice *device = QCanBus::instance()->createDevice(
+        device = QCanBus::instance()->createDevice(
             QStringLiteral("socketcan"), QStringLiteral("vcan0"), &errorString);
         if (!device) {
             qDebug() << errorString;
